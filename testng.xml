@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://beust.com/testng/testng-1.0.dtd" >
+
+<suite name="test" verbose="1">
+	<test name="unit" parallel="methods" thread-count="3">
+        <!--<packages>-->
+            <!--<package name="com.test.service"/>-->
+        <!--</packages>-->
+		<classes>
+			<class name="com.test.service.UserServiceTest"/>
+		</classes>
+	</test>
+</suite>
