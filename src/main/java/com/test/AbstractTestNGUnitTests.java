@@ -2,6 +2,7 @@ package com.test;
 
 import org.mockito.MockitoAnnotations;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Test;
 
 /**
  * Abstract base unit test class for TestNG.
@@ -23,14 +24,15 @@ import org.testng.annotations.BeforeSuite;
  *   </li>
  * </ul>
  *
- * @see org.mockito.MockitoAnnotations
- * @author	Bert Lee
- * @version 2014-8-19
+ * @see org.mockito.MockitoAnnotations#initMocks(Object)
+ * @author Bert Lee
+ * @since 2014-8-19
  */
+@Test(singleThreaded = true) // [FAQ] Is Mockito thread-safe?
 public abstract class AbstractTestNGUnitTests {
 
 	@BeforeSuite(alwaysRun = true) // 集成 TestNG
-	public void init() {
+	public void initMocks() {
 		MockitoAnnotations.initMocks(this); // @Mock 注解
 	}
 

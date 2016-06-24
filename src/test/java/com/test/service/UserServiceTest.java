@@ -22,7 +22,6 @@ import com.test.tutorial.service.impl.UserServiceImpl;
  * @author Bert Lee
  * @version 2014-7-25
  */
-@Test(singleThreaded = true)
 public class UserServiceTest extends AbstractTestNGUnitTests {
 
     // tested service
@@ -59,7 +58,8 @@ public class UserServiceTest extends AbstractTestNGUnitTests {
     public void getUserName(long userId, User user, String expected) {
         // 1. 定义"被依赖的服务"的方法行为
         // stubbing
-        when(userDao.getUserInfo(userId)).thenReturn(user);
+        when(userDao.getUserInfo(userId))
+                .thenReturn(user);
 
         // testing
         String userName = userService.getUserName(userId);
@@ -85,7 +85,8 @@ public class UserServiceTest extends AbstractTestNGUnitTests {
     public void updateUserName(long userId, String userName, int updateResult, boolean expected) {
         // 1. 定义"被依赖的服务"的方法行为
         // stubbing using built-in any() argument matcher
-        when(userDao.updateUserInfo(any(User.class))).thenReturn(updateResult);
+        when(userDao.updateUserInfo(any(User.class)))
+                .thenReturn(updateResult);
 
         // testing
         boolean result = userService.updateUserName(userId, userName);

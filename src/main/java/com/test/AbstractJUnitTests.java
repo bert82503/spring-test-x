@@ -23,11 +23,12 @@ import org.mockito.junit.MockitoRule;
  *   </li>
  * </ul>
  *
+ * @see org.mockito.junit.MockitoJUnit#rule()
  * @see org.mockito.junit.MockitoRule
  * @see org.mockito.runners.MockitoJUnitRunner
- * @see org.mockito.MockitoAnnotations
- * @author	Bert Lee
- * @version 2014-8-19
+ * @see org.mockito.MockitoAnnotations#initMocks(Object)
+ * @author Bert Lee
+ * @since 2014-8-19
  */
 //@RunWith(MockitoJUnitRunner.class)
 public abstract class AbstractJUnitTests {
