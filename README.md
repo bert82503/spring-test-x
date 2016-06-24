@@ -10,8 +10,8 @@ The extension of [Spring TestContext Framework](http://docs.spring.io/spring/doc
 
 ### 代码示例
 #### 单元测试
-* [UserServiceTest](/src/main/java/com/test/service/UserServiceTest.java)（强烈推荐使用！！！）
-* [UserServiceJTest](/src/main/java/com/test/service/UserServiceJTest.java)
+* [UserServiceTest](/src/test/java/com/test/service/UserServiceTest.java)（强烈推荐使用！！！）
+* [UserServiceJTest](/src/test/java/com/test/service/UserServiceJTest.java)
 
 从单元测试代码中可以清晰地看出，基于 TestNG 的参数化数据驱动测试明显要比基于 JUnit 的简单清晰。
 
