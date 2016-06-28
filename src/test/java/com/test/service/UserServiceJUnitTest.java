@@ -20,7 +20,7 @@ import static org.mockito.Mockito.when;
  * @author Bert Lee
  * @version 2014-7-25
  */
-public class UserServiceJTest extends AbstractJUnitTests {
+public class UserServiceJUnitTest extends AbstractJUnitTests {
 
     // tested service
     private UserService userService = new UserServiceImpl();
@@ -64,6 +64,7 @@ public class UserServiceJTest extends AbstractJUnitTests {
         // basic assertions
         assertThat(userName).isEqualTo("");
 
+        /// 重复的测试逻辑代码
         userId = 3L;
         userName = userService.getUserName(userId);
         assertThat(userName).isEqualTo("Edward Lee");

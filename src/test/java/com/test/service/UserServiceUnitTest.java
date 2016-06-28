@@ -22,7 +22,7 @@ import com.test.tutorial.service.impl.UserServiceImpl;
  * @author Bert Lee
  * @version 2014-7-25
  */
-public class UserServiceTest extends AbstractTestNGUnitTests {
+public class UserServiceUnitTest extends AbstractTestNGUnitTests {
 
     // tested service
     private UserService userService = new UserServiceImpl();
