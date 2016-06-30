@@ -5,7 +5,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 /**
- * Abstract base unit test class for TestNG.
+ * Abstract unit test class for TestNG.
  *
  * <ul>
  *   <li>

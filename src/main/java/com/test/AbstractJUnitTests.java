@@ -5,7 +5,7 @@ import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
 /**
- * Abstract base unit test class for JUnit.
+ * Abstract unit test class for JUnit.
  *
  * <p>References:
  * <ul>

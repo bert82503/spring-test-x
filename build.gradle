@@ -22,8 +22,28 @@ repositories {
 
 // In this section you declare the dependencies for your production and test code
 dependencies {
+    // ============ Servlet ============
+    // JSR 340: Java Servlet 3.1 Specification - https://www.jcp.org/en/jsr/detail?id=340
+    // Java Servlet Technology - https://docs.oracle.com/javaee/7/tutorial/servlets.htm
+    compile 'javax.servlet:javax.servlet-api:3.1.0'
+
     // ============ Spring Framework ============
-    compile 'org.springframework:spring-context:4.2.6.RELEASE'
+    compile 'org.springframework:spring-webmvc:4.2.6.RELEASE'
+
+    // ============ JSON ============
+    // http://json.org/
+    // https://github.com/FasterXML/jackson-databind
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.7.5'
+    // https://github.com/FasterXML/jackson-annotations
+    compile 'com.fasterxml.jackson.core:jackson-annotations:2.7.5'
+    // https://github.com/alibaba/fastjson
+    compile 'com.alibaba:fastjson:1.2.13'
+
+    // ============ Bean Validation ============
+    // http://beanvalidation.org/
+    // http://beanvalidation.org/1.1/spec/
+    // http://docs.jboss.org/hibernate/beanvalidation/spec/1.1/api/
+    compile 'javax.validation:validation-api:1.1.0.Final'
 
     compile 'org.apache.commons:commons-lang3:3.4'
 
