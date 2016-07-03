@@ -30,7 +30,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-
     @RequestMapping(value = "/getUserName", method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public UserNameResult getUserName(@Valid UserIdParam userIdParam) {

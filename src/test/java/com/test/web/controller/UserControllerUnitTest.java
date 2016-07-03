@@ -27,6 +27,11 @@ public class UserControllerUnitTest extends AbstractControllerTestNGUnitTests {
 
     // tested controller
     private UserController userController = new UserController();
+    // 21. New annotations: @Captor, @Spy, @InjectMocks (Since 1.8.3)
+    // instantiates object from class and injects mock or spy fields into tested object automatically
+    // no longer have to use ReflectionTestUtils.setField(...)
+//    @InjectMocks
+//    private UserController userController;
 
     // mocked service (被依赖的服务)
     @Mock
@@ -43,6 +48,7 @@ public class UserControllerUnitTest extends AbstractControllerTestNGUnitTests {
      */
     @BeforeClass(alwaysRun = true)
     public void setUp() {
+        // if use @InjectMocks, no longer use it
         ReflectionTestUtils.setField(userController, "userService", userService);
     }
 

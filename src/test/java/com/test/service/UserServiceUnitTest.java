@@ -34,7 +34,7 @@ public class UserServiceUnitTest extends AbstractTestNGUnitTests {
 
     /**
      * <a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/html/unit-testing.html#unit-testing-utilities">
-     * 14.2.1 General testing utilities</a>
+     *     14.2.1 General testing utilities</a>
      */
     @BeforeClass(alwaysRun = true)
     public void setUp() {

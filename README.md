@@ -4,6 +4,7 @@ The extension of [Spring TestContext Framework](http://docs.spring.io/spring/doc
 ### 核心组件
 #### 单元测试（[Unit testing - Wikipedia](https://en.wikipedia.org/wiki/Unit_testing)）
 * [AbstractTestNGUnitTests](/src/main/java/com/test/AbstractTestNGUnitTests.java)（强烈推荐使用！！！）
+* [AbstractControllerTestNGUnitTests](/src/main/java/com/test/AbstractControllerTestNGUnitTests.java)（强烈推荐使用！！！）
 * [AbstractJUnitTests](/src/main/java/com/test/AbstractJUnitTests.java)（不建议使用！）
 
 #### 集成测试（[Integration testing - Wikipedia](https://en.wikipedia.org/wiki/Integration_testing)）
@@ -11,9 +12,16 @@ The extension of [Spring TestContext Framework](http://docs.spring.io/spring/doc
 ### 代码示例
 #### 单元测试
 * [UserServiceUnitTest](/src/test/java/com/test/service/UserServiceUnitTest.java)（强烈推荐使用！！！）
+* [UserControllerUnitTest](/src/test/java/com/test/web/controller/UserControllerUnitTest.java)（强烈推荐使用！！！）
 * [UserServiceJUnitTest](/src/test/java/com/test/service/UserServiceJUnitTest.java)
 
-总结：从单元测试代码中可以清晰地看出，基于 TestNG 的参数化数据驱动测试明显要比基于 JUnit 的简单清晰。
+### 单元测试的价值
+* 可重复地测试某个方法
+* **参数化数据驱动测试**使得测试代码与测试数据完全独立，一组数据就是一个测试 Case，代码结构简单清晰
+* 可作为 API 使用示例
+
+### 总结
+* 从单元测试代码中可以清晰地看出，基于 TestNG 的参数化数据驱动测试明显要比基于 JUnit 的简单清晰。
 
 ### 参考资料
 * [14. Unit Testing of Spring Framework](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/unit-testing.html)
