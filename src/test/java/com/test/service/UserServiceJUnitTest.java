@@ -7,8 +7,8 @@ import com.test.tutorial.dal.UserDao;
 import com.test.tutorial.service.impl.UserServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.test.util.ReflectionTestUtils;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Matchers.anyLong;
@@ -23,11 +23,13 @@ import static org.mockito.Mockito.when;
 public class UserServiceJUnitTest extends AbstractJUnitTests {
 
     // tested service
+    @InjectMocks
     private UserService userService = new UserServiceImpl();
 
     // mocked service (被依赖的服务)
     @Mock
     private UserDao userDao;
+
 
     /**
      * <a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/html/unit-testing.html#unit-testing-utilities">
@@ -35,8 +37,10 @@ public class UserServiceJUnitTest extends AbstractJUnitTests {
      */
     @Before
     public void setUp() {
-        ReflectionTestUtils.setField(userService, "userDao", userDao);
+        // if use @InjectMocks, no longer use it
+//        ReflectionTestUtils.setField(userService, "userDao", userDao);
     }
+
 
     /**
      * <ul>

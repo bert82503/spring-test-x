@@ -4,8 +4,8 @@ import static org.mockito.Matchers.anyLong;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.when;
 
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.test.util.ReflectionTestUtils;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -26,16 +26,17 @@ import com.test.tutorial.web.controller.UserController;
 public class UserControllerUnitTest extends AbstractControllerTestNGUnitTests {
 
     // tested controller
-    private UserController userController = new UserController();
+//    private UserController userController = new UserController();
     // 21. New annotations: @Captor, @Spy, @InjectMocks (Since 1.8.3)
     // instantiates object from class and injects mock or spy fields into tested object automatically
     // no longer have to use ReflectionTestUtils.setField(...)
-//    @InjectMocks
-//    private UserController userController;
+    @InjectMocks
+    private UserController userController;
 
     // mocked service (被依赖的服务)
     @Mock
     private UserService userService;
+
 
     @Override
     protected Object testedController() {
@@ -49,8 +50,9 @@ public class UserControllerUnitTest extends AbstractControllerTestNGUnitTests {
     @BeforeClass(alwaysRun = true)
     public void setUp() {
         // if use @InjectMocks, no longer use it
-        ReflectionTestUtils.setField(userController, "userService", userService);
+//        ReflectionTestUtils.setField(userController, "userService", userService);
     }
+
 
     @Test(dataProvider = "getUserNameTestData")
     public void getUserName(Object[] params, String userName, String expectedContent)
