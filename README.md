@@ -33,4 +33,4 @@ The extension of [Spring TestContext Framework](http://docs.spring.io/spring/doc
 * [AssertJ](http://joel-costigliola.github.io/assertj/)
 * [TestNG - Wikipedia](https://en.wikipedia.org/wiki/TestNG)
 * [Mockito - Wikipedia](https://en.wikipedia.org/wiki/Mockito)
-* JUnit: "A programmer-oriented testing framework for Java" (面向程序员)
+* JUnit: "A **programmer**-oriented testing framework for Java" (面向程序员)
