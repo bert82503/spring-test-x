@@ -1,6 +1,6 @@
 package com.test.service;
 
-import com.test.AbstractJUnitTests;
+import com.test.AbstractJUnitUnitTests;
 import com.test.tutorial.bean.User;
 import com.test.tutorial.service.UserService;
 import com.test.tutorial.dal.UserDao;
@@ -20,7 +20,7 @@ import static org.mockito.Mockito.when;
  * @author Bert Lee
  * @version 2014-7-25
  */
-public class UserServiceJUnitTest extends AbstractJUnitTests {
+public class UserServiceJUnitTest extends AbstractJUnitUnitTests {
 
     // tested service
     @InjectMocks

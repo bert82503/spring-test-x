@@ -1,19 +1,29 @@
-# spring-test-x
-The extension of [Spring TestContext Framework](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/testing.html).
+
+
+spring-test-x
+===
+
+The extension of 
+[Spring TestContext Framework](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/testing.html).
+
 
 ### 核心组件
+
 #### 单元测试（[Unit testing - Wikipedia](https://en.wikipedia.org/wiki/Unit_testing)）
-* [AbstractJUnitTests](/src/main/java/com/test/AbstractJUnitTests.java)
+* [AbstractJUnitUnitTests](/src/main/java/com/test/AbstractJUnitUnitTests.java)
 * [AbstractTestNGUnitTests](/src/main/java/com/test/AbstractTestNGUnitTests.java)
 * [AbstractControllerTestNGUnitTests](/src/main/java/com/test/AbstractControllerTestNGUnitTests.java)
 
 #### 集成测试（[Integration testing - Wikipedia](https://en.wikipedia.org/wiki/Integration_testing)）
 
+
 ### 代码示例
+
 #### 单元测试
 * [UserServiceJUnitTest](/src/test/java/com/test/service/UserServiceJUnitTest.java)
 * [UserServiceUnitTest](/src/test/java/com/test/service/UserServiceUnitTest.java)
 * [UserControllerUnitTest](/src/test/java/com/test/web/controller/UserControllerUnitTest.java)
+
 
 ### 单元测试的价值
 * 尽早在尽量小的范围内暴露错误，以最低的成本修复(尽早发现问题)
@@ -31,6 +41,7 @@ The extension of [Spring TestContext Framework](http://docs.spring.io/spring/doc
 ### 总结
 * 从单元测试代码中可以清晰地看出，基于**TestNG**的**参数化数据驱动测试**明显要比基于JUnit的简单清晰。
 
+
 ### 参考资料
 * [Unit testing - Wikipedia](https://en.wikipedia.org/wiki/Unit_testing)
 * [单元测试 - 维基百科](https://zh.wikipedia.org/wiki/单元测试)
@@ -46,3 +57,4 @@ The extension of [Spring TestContext Framework](http://docs.spring.io/spring/doc
 * [JUnit](http://junit.org): "A **programmer**-oriented testing framework for Java" (面向程序员)
 * [关于单元测试的总结及思考](http://ju.outofmemory.cn/entry/321814)
 * [写有价值的单元测试](https://yq.aliyun.com/articles/93804)
+

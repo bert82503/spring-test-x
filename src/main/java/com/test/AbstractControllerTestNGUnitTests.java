@@ -23,7 +23,7 @@ public abstract class AbstractControllerTestNGUnitTests
     /**
      * MVC mock
      */
-    protected MockMvc mockMvc;
+    private MockMvc mockMvc;
 
     /**
      * Setups the tested controller in MVC Mock environment.

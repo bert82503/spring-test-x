@@ -1,6 +1,7 @@
 package com.test;
 
 import org.junit.Rule;
+
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
@@ -31,7 +32,7 @@ import org.mockito.junit.MockitoRule;
  * @since 2014-8-19
  */
 //@RunWith(MockitoJUnitRunner.class)
-public abstract class AbstractJUnitTests {
+public abstract class AbstractJUnitUnitTests {
 
     @Rule // 集成 JUnit
     public MockitoRule rule = MockitoJUnit.rule(); // @Mock 注解

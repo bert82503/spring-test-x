@@ -1,23 +1,22 @@
 package com.test.service;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.when;
-
+import com.test.AbstractTestNGUnitTests;
+import com.test.tutorial.bean.User;
+import com.test.tutorial.dal.UserDao;
+import com.test.tutorial.service.UserService;
+import com.test.tutorial.service.impl.UserServiceImpl;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.test.AbstractTestNGUnitTests;
-import com.test.tutorial.bean.User;
-import com.test.tutorial.dal.UserDao;
-import com.test.tutorial.service.UserService;
-import com.test.tutorial.service.impl.UserServiceImpl;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.when;
 
 /**
- * Unit test for {@link UserService}.
+ * Unit test of {@link UserService}.
  *
  * @author Bert Lee
  * @version 2014-7-25
@@ -51,7 +50,7 @@ public class UserServiceUnitTest extends AbstractTestNGUnitTests {
      * <ul>
      *   <li>
      *       Mockito:
-     *       <a href="http://site.mockito.org/mockito/docs/current/org/mockito/Mockito.html#2">
+     *       <a href="https://static.javadoc.io/org.mockito/mockito-core/2.8.9/org/mockito/Mockito.html#2">
      *           2. How about some stubbing?</a>
      *   </li>
      *   <li>
@@ -63,7 +62,7 @@ public class UserServiceUnitTest extends AbstractTestNGUnitTests {
     @Test(dataProvider = "getUserNameTestData")
     public void getUserName(long userId, User user, String expected) {
         // 1. 定义"被依赖的服务"的方法行为
-        // stubbing
+        // How about some stubbing?
         when(userDao.getUserInfo(userId))
                 .thenReturn(user);
 
@@ -90,7 +89,7 @@ public class UserServiceUnitTest extends AbstractTestNGUnitTests {
     @Test(dataProvider = "updateUserNameTestData")
     public void updateUserName(long userId, String userName, int updateResult, boolean expected) {
         // 1. 定义"被依赖的服务"的方法行为
-        // stubbing using built-in any() argument matcher
+        // Argument matchers
         when(userDao.updateUserInfo(any(User.class)))
                 .thenReturn(updateResult);
 

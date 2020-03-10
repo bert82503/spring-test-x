@@ -28,12 +28,15 @@ import org.testng.annotations.Test;
  * @author Bert Lee
  * @since 2014-8-19
  */
-@Test(singleThreaded = true) // [FAQ] Is Mockito thread-safe?
+// [FAQ] Is Mockito thread-safe?
+//@Test(singleThreaded = true)
 public abstract class AbstractTestNGUnitTests {
 
-	@BeforeSuite(alwaysRun = true) // 集成 TestNG
+	@BeforeSuite(alwaysRun = true)
 	public void initMocks() {
-		MockitoAnnotations.initMocks(this); // @Mock 注解
+		// 9. Shorthand for mocks creation - @Mock annotation
+		// 模拟对象创建的简写——@Mock注解
+		MockitoAnnotations.initMocks(this);
 	}
 
 }
