@@ -1,7 +1,7 @@
 
 
 spring-test-x
-===
+======
 
 The extension of 
 [Spring TestContext Framework](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/testing.html).
@@ -35,7 +35,23 @@ The extension of
 * 分离接口和实现
 * **参数化数据驱动测试**使**测试代码**与**测试数据**完全独立，一组数据就是一个测试Case，代码结构简洁清晰
 
-![测试金字塔](http://blog.lastww.com/assets/images/unit-test-3.png)
+#### 如何正确认知测试金字塔
+> http://www.51ste.com/share/det-5870.html
+
+如果你还不了解测试金字塔，但是很关注质量和测试，那么不管你是什么角色，这篇文章也适合你。
+
+![测试金字塔](images/1.测试金字塔.png)
+
+![Testing Pyramid](images/2.Testing-Pyramid.png)
+
+**测试金字塔**最早由Mike Cohn提出，Martin Fowler在文章[《TestPyramid》](https://martinfowler.com/bliki/TestPyramid.html)中有详细介绍。如果你对测试金字塔不了解，可以先看Martin的文章。
+
+总得说来，**测试金字塔是自动化测试分层覆盖情况的一个参考模型**，其特点是：
+* 金字塔底层的测试是最接近代码的测试——单元测试，编写成本低、执行速度快、定位问题也更准确，但是离业务层较远，不能很好的体现业务价值；
+* 金字塔顶层的测试是UI层的自动化测试，这一层离业务近，能够体现业务流程覆盖情况，但是编写成本较高、执行速度较慢、不够稳定、定位问题也更难；
+* 而中间层的集成测试，则是成本和价值都是处于居中位置。
+
+因此，金字塔建议底层单元测试占比应该最多，而顶层UI层测试占比较少，中间层的集成测试居中，整体呈现金字塔结构。
 
 
 ### 总结
