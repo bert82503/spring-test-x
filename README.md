@@ -73,4 +73,5 @@ The extension of
 * [JUnit](http://junit.org): "A **programmer**-oriented testing framework for Java" (面向程序员)
 * [关于单元测试的总结及思考](http://ju.outofmemory.cn/entry/321814)
 * [写有价值的单元测试](https://yq.aliyun.com/articles/93804)
+* [如何正确认知测试金字塔](https://www.51ste.com/share/det-5870.html)
 
