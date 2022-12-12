@@ -42,8 +42,6 @@ The extension of
 
 ![测试金字塔](images/1.测试金字塔.png)
 
-![Testing Pyramid](images/2.Testing-Pyramid.png)
-
 **测试金字塔**最早由Mike Cohn提出，Martin Fowler在文章[《TestPyramid》](https://martinfowler.com/bliki/TestPyramid.html)中有详细介绍。如果你对测试金字塔不了解，可以先看Martin的文章。
 
 总得说来，**测试金字塔是自动化测试分层覆盖情况的一个参考模型**，其特点是：
