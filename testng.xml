@@ -7,7 +7,7 @@
             <!--<package name="com.test.service"/>-->
         <!--</packages>-->
 		<classes>
-			<!--<class name="com.test.service.UserServiceUnitTest"/>-->
+			<!--<class name="com.test.service.UserServiceTestngTest"/>-->
             <class name="com.test.web.controller.UserControllerUnitTest"/>
 		</classes>
 	</test>
