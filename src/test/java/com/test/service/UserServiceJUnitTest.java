@@ -16,6 +16,10 @@ import static org.mockito.Mockito.*;
 
 /**
  * Unit test for {@link UserService}.
+ * <pre>
+ * <a href="https://junit.org/junit5/docs/current/user-guide/">
+ *     JUnit 5 User Guide</a>
+ * </pre>
  *
  * @author Edward Lee
  * @since 2014-7-25
@@ -45,17 +49,14 @@ class UserServiceJUnitTest {
 
 
     /**
-     * <ul>
-     *   <li>
-     *       Mockito:
-     *       <a href="http://site.mockito.org/mockito/docs/current/org/mockito/Mockito.html#2">
-     *           2. How about some stubbing?</a>
-     *   </li>
-     *   <li>
-     *       <a href="http://joel-costigliola.github.io/assertj/">
-     *           AssertJ - Fluent assertions for java</a>
-     *   </li>
-     * </ul>
+     * <pre>
+     * Mockito:
+     * <a href="http://site.mockito.org/mockito/docs/current/org/mockito/Mockito.html#2">
+     *     2. How about some stubbing?</a>
+     *
+     * <a href="http://joel-costigliola.github.io/assertj/">
+     *     AssertJ - Fluent assertions for java</a>
+     * </pre>
      */
     @Test
     public void getUserName() {
