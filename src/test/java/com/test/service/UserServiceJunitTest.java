@@ -26,7 +26,7 @@ import static org.mockito.Mockito.*;
  * @version 2023-5-24
  */
 @ExtendWith(MockitoExtension.class)
-class UserServiceJUnitTest {
+class UserServiceJunitTest {
 
     // tested service
     @InjectMocks
@@ -59,7 +59,7 @@ class UserServiceJUnitTest {
      * </pre>
      */
     @Test
-    public void getUserName() {
+    void getUserName() {
         User user = new User(3L, "Edward Lee");
 
         // 1. 定义"被依赖的服务"的方法行为
