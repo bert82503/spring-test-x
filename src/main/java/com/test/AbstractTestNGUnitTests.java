@@ -24,7 +24,7 @@ import org.testng.annotations.Test;
  *   </li>
  * </ul>
  *
- * @see org.mockito.MockitoAnnotations#initMocks(Object)
+ * @see org.mockito.MockitoAnnotations#openMocks(Object)
  * @author Bert Lee
  * @since 2014-8-19
  */
@@ -36,7 +36,7 @@ public abstract class AbstractTestNGUnitTests {
 	public void initMocks() {
 		// 9. Shorthand for mocks creation - @Mock annotation
 		// 模拟对象创建的简写——@Mock注解
-		MockitoAnnotations.initMocks(this);
+		MockitoAnnotations.openMocks(this);
 	}
 
 }

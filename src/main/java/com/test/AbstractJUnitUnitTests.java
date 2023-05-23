@@ -26,8 +26,7 @@ import org.mockito.junit.MockitoRule;
  *
  * @see org.mockito.junit.MockitoJUnit#rule()
  * @see org.mockito.junit.MockitoRule
- * @see org.mockito.runners.MockitoJUnitRunner
- * @see org.mockito.MockitoAnnotations#initMocks(Object)
+ * @see org.mockito.MockitoAnnotations#openMocks(Object)
  * @author Bert Lee
  * @since 2014-8-19
  */
@@ -39,7 +38,7 @@ public abstract class AbstractJUnitUnitTests {
 
 //	@Before // 集成 JUnit
 //	public void initMocks() {
-//		MockitoAnnotations.initMocks(this); // @Mock 注解
+//		MockitoAnnotations.openMocks(this); // @Mock 注解
 //	}
 
 }

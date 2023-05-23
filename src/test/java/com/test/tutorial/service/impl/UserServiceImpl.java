@@ -3,10 +3,10 @@ package com.test.tutorial.service.impl;
 import com.test.tutorial.bean.User;
 import com.test.tutorial.service.UserService;
 import com.test.tutorial.dal.UserDao;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 
@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean updateUserName(long userId, String userName) {
-        if (userId <= 0L || StringUtils.isEmpty(userName)) {
+        if (userId <= 0L || !StringUtils.hasLength(userName)) {
             logger.warn("param of 'updateUserName' is invalid, userId: {}, userName: {}",
                     userId, userName);
             return false;

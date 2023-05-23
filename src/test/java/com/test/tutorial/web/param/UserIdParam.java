@@ -4,6 +4,8 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * User id request param.
@@ -17,26 +19,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author	Bert Lee
  * @version 2014-8-19
  */
-public class UserIdParam extends BaseParam {
+@EqualsAndHashCode(callSuper = true)
+@Data
+public class UserIdParam extends AbstractParam {
 
-	private long userId;
-
-    public long getUserId() {
-        return userId;
-    }
-
+    /**
+     * 用户身份
+     */
     @JsonProperty(value = "userId", required = true)
     @NotNull(message = "'userId' param is null")
     // 4.3. Message interpolation -《JSR 303: Bean Validation》
     @Min(value = 1, message = "'userId' param must be great or equal than {value}")
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
-
-    @Override
-    public String toString() {
-        return "UserIdParam{" +
-                "userId=" + userId +
-                '}';
-    }
+	private long userId;
 }

@@ -1,8 +1,8 @@
 package com.test.tutorial.web.controller;
 
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -37,7 +37,7 @@ public class UserController {
         String userName = userService.getUserName(userId);
 
         UserNameResult result = new UserNameResult();
-        if (StringUtils.isEmpty(userName)) {
+        if (!StringUtils.hasLength(userName)) {
             result.setError(ErrorCodeMessage.USER_NOT_EXISTS);
         } else {
             result.setName(userName);

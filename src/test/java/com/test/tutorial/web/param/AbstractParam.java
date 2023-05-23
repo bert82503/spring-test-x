@@ -10,5 +10,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  */
 // https://github.com/FasterXML/jackson-annotations#annotations-for-ignoring-properties
 @JsonIgnoreProperties(ignoreUnknown = true) // 忽略多传的参数
-public class BaseParam {
+public abstract class AbstractParam {
+    //
 }

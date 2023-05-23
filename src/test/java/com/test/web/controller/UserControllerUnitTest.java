@@ -1,7 +1,7 @@
 package com.test.web.controller;
 
-import static org.mockito.Matchers.anyLong;
-import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.anyLong;
+import static org.mockito.Mockito.anyString;
 import static org.mockito.Mockito.when;
 
 import org.mockito.InjectMocks;

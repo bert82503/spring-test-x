@@ -4,11 +4,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import org.apache.commons.lang3.CharEncoding;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
+import java.nio.charset.StandardCharsets;
 
 /**
  * Utility methods of mock MVC request.
@@ -76,7 +77,7 @@ class MockMvcRequestUtils {
         requestBuilder
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
-                .characterEncoding(CharEncoding.UTF_8)
+                .characterEncoding(StandardCharsets.UTF_8)
         ;
 
         // 3. 定义期望的响应行为

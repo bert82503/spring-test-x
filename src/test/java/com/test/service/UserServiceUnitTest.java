@@ -12,7 +12,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.when;
 
 /**
@@ -25,7 +25,7 @@ public class UserServiceUnitTest extends AbstractTestNGUnitTests {
 
     // tested service
     @InjectMocks
-    private UserService userService = new UserServiceImpl();
+    private final UserService userService = new UserServiceImpl();
 //    @InjectMocks
 //    private UserServiceImpl userService; // 注意：服务实现类声明！(不建议这样使用！)
 

@@ -11,7 +11,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Matchers.anyLong;
+import static org.mockito.Mockito.anyLong;
 import static org.mockito.Mockito.when;
 
 /**
@@ -24,7 +24,7 @@ public class UserServiceJUnitTest extends AbstractJUnitUnitTests {
 
     // tested service
     @InjectMocks
-    private UserService userService = new UserServiceImpl();
+    private final UserService userService = new UserServiceImpl();
 
     // mocked service (被依赖的服务)
     @Mock
