@@ -1,26 +1,28 @@
 package com.test.service;
 
-import com.test.AbstractJUnitUnitTests;
 import com.test.tutorial.bean.User;
 import com.test.tutorial.service.UserService;
 import com.test.tutorial.dal.UserDao;
 import com.test.tutorial.service.impl.UserServiceImpl;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.anyLong;
-import static org.mockito.Mockito.when;
+import static org.assertj.core.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 /**
  * Unit test for {@link UserService}.
  *
- * @author Bert Lee
- * @version 2014-7-25
+ * @author Edward Lee
+ * @since 2014-7-25
+ * @version 2023-5-24
  */
-public class UserServiceJUnitTest extends AbstractJUnitUnitTests {
+@ExtendWith(MockitoExtension.class)
+class UserServiceJUnitTest {
 
     // tested service
     @InjectMocks
@@ -35,7 +37,7 @@ public class UserServiceJUnitTest extends AbstractJUnitUnitTests {
      * <a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/html/unit-testing.html#unit-testing-utilities">
      * 14.2.1 General testing utilities</a>
      */
-    @Before
+    @BeforeEach
     public void setUp() {
         // if use @InjectMocks, no longer use it
 //        ReflectionTestUtils.setField(userService, "userDao", userDao);
@@ -73,5 +75,4 @@ public class UserServiceJUnitTest extends AbstractJUnitUnitTests {
         userName = userService.getUserName(userId);
         assertThat(userName).isEqualTo("Edward Lee");
     }
-
 }
