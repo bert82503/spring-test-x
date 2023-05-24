@@ -60,7 +60,9 @@ class UserServiceJunitTest {
      */
     @Test
     void getUserName() {
-        User user = new User(3L, "Edward Lee");
+        User user = new User()
+                .setId(3L)
+                .setUserName("Edward Lee");
 
         // 1. 定义"被依赖的服务"的方法行为
         // stubbing

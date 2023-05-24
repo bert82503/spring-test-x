@@ -84,9 +84,9 @@ public class UserServiceTestngTest {
                 {0L, null, ""},
                 //
                 {24L, null, ""},
-                {3L, new User(3L, ""), ""},
-                {10L, new User(10L, "Edward Lee"), "Edward Lee"},
-                {23L, new User(23L, "广益@!~#$%^&"), "广益@!~#$%^&"},
+                {3L, new User().setId(3L).setUserName(""), ""},
+                {10L, new User().setId(10L).setUserName("Edward Lee"), "Edward Lee"},
+                {23L, new User().setId(23L).setUserName("广益@!~#$%^&"), "广益@!~#$%^&"},
         };
     }
 
