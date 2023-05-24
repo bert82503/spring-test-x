@@ -96,6 +96,7 @@ class UserServiceJunitTest {
      */
     @Test
     void getOrgName(@Mock OrgMapper orgMapper) {
+        // 构造数据
         User user = new User()
                 .setId(3L)
                 .setUserName("Edward Lee")
@@ -103,17 +104,20 @@ class UserServiceJunitTest {
         Organization org = new Organization()
                 .setId(13L)
                 .setOrgName("OpenSource");
+        // 准备
         // Given
         when(userMapper.selectById(anyLong())).thenReturn(user);
         when(orgMapper.selectById(anyLong())).thenReturn(org);
 
         userService = new UserServiceImpl(userMapper, orgMapper);
 
+        // 执行
         // When
         String orgName = userService.getOrgName(3L);
-        assertThat(orgName).isEqualTo("OpenSource");
 
+        // 验证
         // Then
+        assertThat(orgName).isEqualTo("OpenSource");
         verify(userMapper).selectById(3L);
         verify(orgMapper).selectById(13L);
     }
