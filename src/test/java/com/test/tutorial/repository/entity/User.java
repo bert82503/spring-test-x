@@ -18,7 +18,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-//@TableName(value = "t_digital_user")
+@TableName(value = "t_digital_user")
 public class User implements Serializable {
 	/**
 	 * 主键
