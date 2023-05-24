@@ -1,62 +1,67 @@
 package com.test.web.controller;
 
-import com.test.Application;
 import com.test.MockMvcRequestUtils;
 import com.test.tutorial.service.UserService;
 import com.test.tutorial.web.controller.UserController;
-import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.BeforeEach;
+import com.test.tutorial.web.param.UserIdParam;
+import com.test.tutorial.web.result.UserNameResult;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.annotation.Resource;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 /**
- * Test of {@link UserController} by HTTP API.
+ * Test of {@link UserController}.
  * <pre>
  * <a href="https://juejin.cn/post/7067402739134758948">
  *     SpringBoot+Junit5+Assertj+Mockito的单元测试</a>
- * <a href="https://juejin.cn/post/7036140165944836104">
- *     SpringBoot实战：JUnit5+MockMvc+Mockito做好单元测试</a>
  * </pre>
  *
  * @author lihuagang
  * @date 2023/5/24
  */
-@Slf4j
-@SpringBootTest(classes = Application.class)
+@SpringJUnitWebConfig(UserController.class)
 //@ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
-//@EnableWebMvc
-public class UserControllerHttpApiTest {
+@EnableWebMvc
+public class UserControllerTest {
 
     @Resource
+    private UserController userController;
+    @Resource
     private MockMvc mockMvc;
-    // mocked service (被依赖的服务)
+
     @MockBean
     private UserService userService;
 
-    // 组件自动装配
-//    @Resource
-//    private UserService userService;
+    @Test
+    void getUserName() {
+        // 数据准备
+        UserIdParam userIdParam = new UserIdParam().setUserId(3L);
+        // 准备-Given
+        // 1. 定义"被依赖的服务"的方法行为
+        when(userService.getUserName(anyLong())).thenReturn("Edward Lee");
 
-    public UserControllerHttpApiTest() {
-        log.info("create UserControllerHttpApiTest instance");
-    }
+        // 执行-When
+        UserNameResult result = userController.getUserName(userIdParam);
 
-    @BeforeEach
-    void setUp() {
-        // 组件自动装配
-//        ReflectionTestUtils.setField(this, "userService", userService);
+        // 验证-Then
+        assertThat(result).isNotNull();
+        assertThat(result.getCode()).isEqualTo(0);
+        assertThat(result.getMessage()).isEqualTo("OK");
+        assertThat(result.getName()).isEqualTo("Edward Lee");
+        verify(userService, times(1)).getUserName(3L);
     }
 
     @Test
-    void getUserName() throws Exception {
+    void getUserName4MockMvc() throws Exception {
         // 准备-Given
         // 1. 定义"被依赖的服务"的方法行为
         when(userService.getUserName(anyLong())).thenReturn("Edward Lee");
