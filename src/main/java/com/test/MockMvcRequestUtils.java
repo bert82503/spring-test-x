@@ -1,8 +1,7 @@
 package com.test;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
@@ -18,7 +17,7 @@ import java.nio.charset.StandardCharsets;
  * @version 2023-5-24
  * @since 2016-06-29 12:23
  */
-class MockMvcRequestUtils {
+public class MockMvcRequestUtils {
 
     /**
      * Mocks the GET request.
