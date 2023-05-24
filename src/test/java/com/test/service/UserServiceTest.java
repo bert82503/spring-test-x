@@ -1,9 +1,10 @@
-package com.test.tutorial.service;
+package com.test.service;
 
 import com.test.tutorial.repository.OrgMapper;
 import com.test.tutorial.repository.UserMapper;
 import com.test.tutorial.repository.entity.Organization;
 import com.test.tutorial.repository.entity.User;
+import com.test.tutorial.service.UserService;
 import com.test.tutorial.service.impl.UserServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -43,7 +44,6 @@ class UserServiceTest {
 
     @MockBean
     private UserMapper userMapper;
-
     @MockBean
     private OrgMapper orgMapper;
 
@@ -69,19 +69,16 @@ class UserServiceTest {
         Organization org = new Organization()
                 .setId(13L)
                 .setOrgName("OpenSource");
-        // 准备
-        // Given
+        // 准备-Given
         when(userMapper.selectById(anyLong())).thenReturn(user);
         when(orgMapper.selectById(anyLong())).thenReturn(org);
 
         userService = new UserServiceImpl(userMapper, orgMapper);
 
-        // 执行
-        // When
+        // 执行-When
         String orgName = userService.getOrgName(3L);
 
-        // 验证
-        // Then
+        // 验证-Then
         assertThat(orgName).isEqualTo("OpenSource");
         verify(userMapper, times(1)).selectById(3L);
         verify(orgMapper).selectById(13L);
