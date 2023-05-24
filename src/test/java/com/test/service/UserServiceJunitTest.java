@@ -39,7 +39,7 @@ class UserServiceJunitTest {
     @Mock
     private UserMapper userMapper;
 
-    // ioc容器管控
+    // 组件自动装配
 //    @Resource
 //    private UserMapper userMapper;
 //    @Resource
@@ -53,6 +53,7 @@ class UserServiceJunitTest {
     @BeforeEach
     public void setUp() {
         // if use @InjectMocks, no longer use it
+        // 组件自动装配
 //        ReflectionTestUtils.setField(userService, "userMapper", userMapper);
 //        ReflectionTestUtils.setField(userService, "orgMapper", orgMapper);
     }

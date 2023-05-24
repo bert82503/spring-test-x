@@ -21,6 +21,8 @@ import static org.mockito.Mockito.*;
 /**
  * Test of {@link UserController} by HTTP API.
  * <p></p>
+ * <a href="https://juejin.cn/post/7067402739134758948">
+ *     SpringBoot+Junit5+Assertj+Mockito的单元测试</a>
  * <a href="https://juejin.cn/post/7036140165944836104">
  *     SpringBoot实战：JUnit5+MockMvc+Mockito做好单元测试</a>
  *
@@ -39,7 +41,7 @@ public class UserControllerHttpApiTest {
     @MockBean
     private UserService userService;
 
-    // ioc容器管控
+    // 组件自动装配
 //    @Resource
 //    private UserService userService;
 
@@ -49,6 +51,7 @@ public class UserControllerHttpApiTest {
 
     @BeforeEach
     void setUp() {
+        // 组件自动装配
 //        ReflectionTestUtils.setField(this, "userService", userService);
     }
 
