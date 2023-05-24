@@ -1,6 +1,6 @@
 package com.test.tutorial.web.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,12 +23,19 @@ import com.test.tutorial.web.result.UserNameResult;
  * @author Bert Lee
  * @version 2014-8-19
  */
-@RestController
+@Slf4j
+@RestController("userController")
 @RequestMapping(value = "/user")
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public UserController(
+            UserService userService
+    ) {
+        this.userService = userService;
+        log.info("create UserController instance");
+    }
 
     @RequestMapping(value = "/getUserName", method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -61,5 +68,4 @@ public class UserController {
 
         return result;
     }
-
 }
