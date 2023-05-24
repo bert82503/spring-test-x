@@ -118,7 +118,7 @@ class UserServiceJunitTest {
         // 验证
         // Then
         assertThat(orgName).isEqualTo("OpenSource");
-        verify(userMapper).selectById(3L);
+        verify(userMapper, times(1)).selectById(3L);
         verify(orgMapper).selectById(13L);
     }
 }
