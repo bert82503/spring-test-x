@@ -30,11 +30,11 @@ import static org.mockito.Mockito.*;
 public class UserServiceTestngTest {
 
     // tested service
-    @InjectMocks
-    private final UserService userService = new UserServiceImpl();
-    // 注意：服务实现类声明！(不建议这样使用！)
 //    @InjectMocks
-//    private UserServiceImpl userService;
+//    private final UserService userService = new UserServiceImpl();
+    // 注意：服务实现类声明！(不建议这样使用！)
+    @InjectMocks
+    private UserServiceImpl userService;
 
     // mocked service (被依赖的服务)
     // 9. Shorthand for mocks creation - @Mock annotation

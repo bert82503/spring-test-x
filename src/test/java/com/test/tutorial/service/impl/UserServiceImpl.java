@@ -9,7 +9,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import javax.annotation.Resource;
 import java.util.Optional;
 
 /**
@@ -22,10 +21,21 @@ import java.util.Optional;
 @Service("userService")
 public class UserServiceImpl implements UserService {
 
-    @Resource
-    private UserMapper userMapper;
-    @Resource
-    private OrgMapper orgMapper;
+//    @Resource
+//    private UserMapper userMapper;
+//    @Resource
+//    private OrgMapper orgMapper;
+
+    private final UserMapper userMapper;
+    private final OrgMapper orgMapper;
+
+    public UserServiceImpl(
+            UserMapper userMapper,
+            OrgMapper orgMapper
+    ) {
+        this.userMapper = userMapper;
+        this.orgMapper = orgMapper;
+    }
 
     @Override
     public String getUserName(long userId) {

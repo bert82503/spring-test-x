@@ -1,6 +1,8 @@
 package com.test.service;
 
+import com.test.tutorial.repository.OrgMapper;
 import com.test.tutorial.repository.UserMapper;
+import com.test.tutorial.repository.entity.Organization;
 import com.test.tutorial.repository.entity.User;
 import com.test.tutorial.service.UserService;
 import com.test.tutorial.service.impl.UserServiceImpl;
@@ -17,8 +19,8 @@ import static org.mockito.Mockito.*;
 /**
  * Unit test for {@link UserService}.
  * <pre>
- * <a href="https://junit.org/junit5/docs/current/user-guide/">
- *     JUnit 5 User Guide</a>
+ * <a href="https://blog.csdn.net/ceyowa/article/details/122506061">
+ *     SpringBoot中使用Junit5(Jupiter)和Mockito</a>
  * </pre>
  *
  * @author Edward Lee
@@ -30,7 +32,8 @@ class UserServiceJunitTest {
 
     // tested service
     @InjectMocks
-    private final UserService userService = new UserServiceImpl();
+//    private final UserService userService = new UserServiceImpl();
+    private UserServiceImpl userService;
 
     // mocked service (被依赖的服务)
     @Mock
@@ -77,5 +80,33 @@ class UserServiceJunitTest {
         userId = 3L;
         userName = userService.getUserName(userId);
         assertThat(userName).isEqualTo("Edward Lee");
+    }
+
+    /**
+     * <a href="https://www.baeldung.com/mockito-junit-5-extension">
+     *     Mockito and JUnit 5 – Using ExtendWith</a>
+     */
+    @Test
+    void getOrgName(@Mock OrgMapper orgMapper) {
+        User user = new User()
+                .setId(3L)
+                .setUserName("Edward Lee")
+                .setOrgId(13L);
+        Organization org = new Organization()
+                .setId(13L)
+                .setOrgName("OpenSource");
+        // Given
+        when(userMapper.selectById(anyLong())).thenReturn(user);
+        when(orgMapper.selectById(anyLong())).thenReturn(org);
+
+        userService = new UserServiceImpl(userMapper, orgMapper);
+
+        // When
+        String orgName = userService.getOrgName(3L);
+        assertThat(orgName).isEqualTo("OpenSource");
+
+        // Then
+        verify(userMapper).selectById(3L);
+        verify(orgMapper).selectById(13L);
     }
 }
