@@ -10,9 +10,7 @@ The extension of
 ### 核心组件
 
 #### 单元测试（[Unit testing - Wikipedia](https://en.wikipedia.org/wiki/Unit_testing)）
-* [AbstractJUnitUnitTests](/src/main/java/com/test/AbstractJUnitUnitTests.java)
-* [AbstractTestNGUnitTests](/src/main/java/com/test/AbstractTestNGUnitTests.java)
-* [AbstractControllerTestNGUnitTests](/src/main/java/com/test/AbstractControllerTestNGUnitTests.java)
+* [AbstractControllerTestngTest](/src/main/java/com/test/AbstractControllerTestngTest.java)
 
 #### 集成测试（[Integration testing - Wikipedia](https://en.wikipedia.org/wiki/Integration_testing)）
 
@@ -20,9 +18,12 @@ The extension of
 ### 代码示例
 
 #### 单元测试
-* [UserServiceJUnitTest](/src/test/java/com/test/service/UserServiceJUnitTest.java)
-* [UserServiceUnitTest](/src/test/java/com/test/service/UserServiceUnitTest.java)
-* [UserControllerUnitTest](/src/test/java/com/test/web/controller/UserControllerUnitTest.java)
+* [UserServiceJunitTest](/src/test/java/com/test/service/UserServiceJunitTest.java)
+* [UserServiceTestngTest](/src/test/java/com/test/service/UserServiceTestngTest.java)
+* [UserControllerTestngTest](/src/test/java/com/test/web/controller/UserControllerTestngTest.java)
+
+#### 集成测试
+* [UserControllerHttpApiTest](/src/test/java/com/test/web/controller/UserControllerHttpApiTest.java)
 
 
 ### 单元测试的价值
