@@ -1,8 +1,10 @@
 package com.test.web.controller;
 
-import static org.mockito.Mockito.anyLong;
-import static org.mockito.Mockito.anyString;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
+
+import com.test.AbstractControllerTestngTest;
+import com.test.tutorial.service.UserService;
+import com.test.tutorial.web.controller.UserController;
 
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -10,20 +12,16 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.test.AbstractControllerTestNGUnitTests;
-import com.test.tutorial.service.UserService;
-import com.test.tutorial.web.controller.UserController;
-
 /**
  * Unit test for {@link UserController}.
  * <p/>
  * <a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/html/unit-testing.html#unit-testing-spring-mvc">
  * 14.2.2 Spring MVC - Unit Testing</a>
  *
- * @author Bert Lee
- * @version 2014-8-19
+ * @author Edward Lee
+ * @version 2023-5-24
  */
-public class UserControllerUnitTest extends AbstractControllerTestNGUnitTests {
+public class UserControllerTestngTest extends AbstractControllerTestngTest {
 
     // tested controller
 //    private UserController userController = new UserController();

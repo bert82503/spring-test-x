@@ -14,8 +14,9 @@ import java.nio.charset.StandardCharsets;
 /**
  * Utility methods of mock MVC request.
  *
- * @author xingle
- * @since 2016年06月29日 12:23
+ * @author Edward Lee
+ * @version 2023-5-24
+ * @since 2016-06-29 12:23
  */
 class MockMvcRequestUtils {
 

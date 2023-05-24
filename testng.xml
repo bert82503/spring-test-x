@@ -8,7 +8,7 @@
         <!--</packages>-->
 		<classes>
 			<!--<class name="com.test.service.UserServiceTestngTest"/>-->
-            <class name="com.test.web.controller.UserControllerUnitTest"/>
+            <class name="com.test.web.controller.UserControllerTestngTest"/>
 		</classes>
 	</test>
 </suite>

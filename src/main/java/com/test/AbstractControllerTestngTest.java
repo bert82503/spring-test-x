@@ -1,17 +1,23 @@
 package com.test;
 
+import org.mockito.quality.Strictness;
+import org.mockito.testng.MockitoSettings;
+import org.mockito.testng.MockitoTestNGListener;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 
 /**
  * Abstract controller unit test class for Spring MVC and TestNG.
  *
- * @author Bert Lee
+ * @author Edward Lee
  * @version 2014-8-19
+ * @version 2023-5-24
  */
-public abstract class AbstractControllerTestNGUnitTests
-        extends AbstractTestNGUnitTests {
+@Listeners(MockitoTestNGListener.class)
+@MockitoSettings(strictness = Strictness.WARN)
+public abstract class AbstractControllerTestngTest {
 
     /**
      * Gets the tested controller.
@@ -28,7 +34,7 @@ public abstract class AbstractControllerTestNGUnitTests
     /**
      * Setups the tested controller in MVC Mock environment.
      */
-    @BeforeClass(alwaysRun = true)
+    @BeforeMethod(alwaysRun = true)
     public void buildMockMvc() {
         mockMvc = MockMvcBuilders.standaloneSetup(testedController()).build();
     }
@@ -39,7 +45,7 @@ public abstract class AbstractControllerTestNGUnitTests
      * @param url             请求 URL
      * @param params          请求参数
      * @param expectedContent 期望的返回内容
-     * @throws Exception
+     * @throws Exception 异常信息
      */
     protected void getMock(String url, Object[] params, String expectedContent)
             throws Exception {
@@ -52,11 +58,10 @@ public abstract class AbstractControllerTestNGUnitTests
      * @param url             请求 URL
      * @param paramsJson      请求参数 JSON 串
      * @param expectedContent 期望的返回内容
-     * @throws Exception
+     * @throws Exception 异常信息
      */
     protected void postMock(String url, String paramsJson, String expectedContent)
             throws Exception {
         MockMvcRequestUtils.postMock(mockMvc, url, paramsJson, expectedContent);
     }
-
 }
