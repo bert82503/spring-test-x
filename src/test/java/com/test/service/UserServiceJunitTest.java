@@ -104,19 +104,16 @@ class UserServiceJunitTest {
         Organization org = new Organization()
                 .setId(13L)
                 .setOrgName("OpenSource");
-        // 准备
-        // Given
+        // 准备-Given
         when(userMapper.selectById(anyLong())).thenReturn(user);
         when(orgMapper.selectById(anyLong())).thenReturn(org);
 
         userService = new UserServiceImpl(userMapper, orgMapper);
 
-        // 执行
-        // When
+        // 执行-When
         String orgName = userService.getOrgName(3L);
 
-        // 验证
-        // Then
+        // 验证-Then
         assertThat(orgName).isEqualTo("OpenSource");
         verify(userMapper, times(1)).selectById(3L);
         verify(orgMapper).selectById(13L);
