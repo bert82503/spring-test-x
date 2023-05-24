@@ -1,5 +1,7 @@
 package com.test.tutorial.service.impl;
 
+import com.test.tutorial.repository.OrgMapper;
+import com.test.tutorial.repository.entity.Organization;
 import com.test.tutorial.repository.entity.User;
 import com.test.tutorial.service.UserService;
 import com.test.tutorial.repository.UserMapper;
@@ -8,12 +10,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import java.util.Optional;
 
 /**
  * User service implementation.
  *
- * @author Bert Lee
- * @version 2014-7-25
+ * @author Edward Lee
+ * @date 2014-7-25
  */
 @Slf4j
 @Service("userService")
@@ -21,6 +24,8 @@ public class UserServiceImpl implements UserService {
 
     @Resource
     private UserMapper userMapper;
+    @Resource
+    private OrgMapper orgMapper;
 
     @Override
     public String getUserName(long userId) {
@@ -40,8 +45,20 @@ public class UserServiceImpl implements UserService {
             return false;
         }
 
-        User user = new User(userId, userName);
+        User user = new User()
+                .setId(userId)
+                .setUserName(userName);
         int result = userMapper.updateById(user);
         return result > 0;
+    }
+
+    @Override
+    public String getOrgName(long userId) {
+        return Optional.of(userId)
+                .map(userMapper::selectById)
+                .map(User::getOrgId)
+                .map(orgMapper::selectById)
+                .map(Organization::getOrgName)
+                .orElse(null);
     }
 }

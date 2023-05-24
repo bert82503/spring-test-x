@@ -25,4 +25,12 @@ public interface UserService {
      */
     boolean updateUserName(long userId, String userName);
 
+    /**
+     * 查询用户所属的组织名称
+     *
+     * @param userId 用户身份
+     * @return 组织名称
+     */
+    String getOrgName(long userId);
+
 }
