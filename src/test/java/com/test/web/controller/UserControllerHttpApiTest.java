@@ -19,7 +19,10 @@ import javax.annotation.Resource;
 import static org.mockito.Mockito.*;
 
 /**
- * Test of {@link UserController}.
+ * Test of {@link UserController} by HTTP API.
+ * <p></p>
+ * <a href="https://juejin.cn/post/7036140165944836104">
+ *     SpringBoot实战：JUnit5+MockMvc+Mockito做好单元测试</a>
  *
  * @author lihuagang
  * @date 2023/5/24
@@ -36,18 +39,24 @@ public class UserControllerHttpApiTest {
     @MockBean
     private UserService userService;
 
+    // ioc容器管控
+//    @Resource
+//    private UserService userService;
+
     public UserControllerHttpApiTest() {
         log.info("create UserControllerHttpApiTest instance");
     }
 
     @BeforeEach
     void setUp() {
-        // 1. 定义"被依赖的服务"的方法行为
-        when(userService.getUserName(anyLong())).thenReturn("Edward Lee");
+//        ReflectionTestUtils.setField(this, "userService", userService);
     }
 
     @Test
     void getUserName() throws Exception {
+        // 1. 定义"被依赖的服务"的方法行为
+        when(userService.getUserName(anyLong())).thenReturn("Edward Lee");
+
         String url = "/user/getUserName?userId={userId}&ptp={ptp}";
         Object[] params = new Object[]{"3", "1.PC.1AUqk"};
         String expectedContent = "{\"code\":0,\"message\":\"OK\",\"name\":\"Edward Lee\"}";

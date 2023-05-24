@@ -39,6 +39,12 @@ class UserServiceJunitTest {
     @Mock
     private UserMapper userMapper;
 
+    // ioc容器管控
+//    @Resource
+//    private UserMapper userMapper;
+//    @Resource
+//    private OrgMapper orgMapper;
+
 
     /**
      * <a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/html/unit-testing.html#unit-testing-utilities">
@@ -48,6 +54,7 @@ class UserServiceJunitTest {
     public void setUp() {
         // if use @InjectMocks, no longer use it
 //        ReflectionTestUtils.setField(userService, "userMapper", userMapper);
+//        ReflectionTestUtils.setField(userService, "orgMapper", orgMapper);
     }
 
 
