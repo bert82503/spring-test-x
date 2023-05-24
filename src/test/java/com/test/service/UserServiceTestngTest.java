@@ -1,7 +1,7 @@
 package com.test.service;
 
-import com.test.tutorial.bean.User;
-import com.test.tutorial.dal.UserDao;
+import com.test.tutorial.repository.UserMapper;
+import com.test.tutorial.repository.entity.User;
 import com.test.tutorial.service.UserService;
 import com.test.tutorial.service.impl.UserServiceImpl;
 import org.mockito.InjectMocks;
@@ -39,7 +39,7 @@ public class UserServiceTestngTest {
     // mocked service (被依赖的服务)
     // 9. Shorthand for mocks creation - @Mock annotation
     @Mock
-    private UserDao userDao;
+    private UserMapper userMapper;
 
 
     /**
@@ -49,7 +49,7 @@ public class UserServiceTestngTest {
     @BeforeClass(alwaysRun = true)
     public void setUp() {
         // if use @InjectMocks, no longer use it
-//        ReflectionTestUtils.setField(userService, "userDao", userDao);
+//        ReflectionTestUtils.setField(userService, "userMapper", userMapper);
     }
 
 
@@ -67,7 +67,7 @@ public class UserServiceTestngTest {
     public void getUserName(long userId, User user, String expected) {
         // 1. 定义"被依赖的服务"的方法行为
         // How about some stubbing?
-        when(userDao.getUserInfo(userId))
+        when(userMapper.selectById(userId))
                 .thenReturn(user);
 
         // testing
@@ -94,7 +94,7 @@ public class UserServiceTestngTest {
     public void updateUserName(long userId, String userName, int updateResult, boolean expected) {
         // 1. 定义"被依赖的服务"的方法行为
         // Argument matchers
-        when(userDao.updateUserInfo(any(User.class)))
+        when(userMapper.updateById(any(User.class)))
                 .thenReturn(updateResult);
 
         // testing

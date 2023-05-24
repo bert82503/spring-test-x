@@ -1,8 +1,8 @@
 package com.test.service;
 
-import com.test.tutorial.bean.User;
+import com.test.tutorial.repository.UserMapper;
+import com.test.tutorial.repository.entity.User;
 import com.test.tutorial.service.UserService;
-import com.test.tutorial.dal.UserDao;
 import com.test.tutorial.service.impl.UserServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -34,7 +34,7 @@ class UserServiceJunitTest {
 
     // mocked service (被依赖的服务)
     @Mock
-    private UserDao userDao;
+    private UserMapper userMapper;
 
 
     /**
@@ -44,7 +44,7 @@ class UserServiceJunitTest {
     @BeforeEach
     public void setUp() {
         // if use @InjectMocks, no longer use it
-//        ReflectionTestUtils.setField(userService, "userDao", userDao);
+//        ReflectionTestUtils.setField(userService, "userMapper", userMapper);
     }
 
 
@@ -64,7 +64,7 @@ class UserServiceJunitTest {
 
         // 1. 定义"被依赖的服务"的方法行为
         // stubbing
-        when(userDao.getUserInfo(anyLong())).thenReturn(user);
+        when(userMapper.selectById(anyLong())).thenReturn(user);
 
         long userId = 0L;
         String userName = userService.getUserName(userId);

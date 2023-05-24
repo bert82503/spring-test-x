@@ -1,10 +1,9 @@
 package com.test.tutorial.service.impl;
 
-import com.test.tutorial.bean.User;
+import com.test.tutorial.repository.entity.User;
 import com.test.tutorial.service.UserService;
-import com.test.tutorial.dal.UserDao;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.test.tutorial.repository.UserMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -13,16 +12,15 @@ import javax.annotation.Resource;
 /**
  * User service implementation.
  *
- * @version 2014-7-25
  * @author Bert Lee
+ * @version 2014-7-25
  */
+@Slf4j
 @Service("userService")
 public class UserServiceImpl implements UserService {
 
-    private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
-
     @Resource
-    private UserDao userDao;
+    private UserMapper userMapper;
 
     @Override
     public String getUserName(long userId) {
@@ -30,21 +28,20 @@ public class UserServiceImpl implements UserService {
             return "";
         }
 
-        User user = userDao.getUserInfo(userId);
-        return user != null ? user.getName() : "";
+        User user = userMapper.selectById(userId);
+        return user != null ? user.getUserName() : "";
     }
 
     @Override
     public boolean updateUserName(long userId, String userName) {
         if (userId <= 0L || !StringUtils.hasLength(userName)) {
-            logger.warn("param of 'updateUserName' is invalid, userId: {}, userName: {}",
+            log.warn("param of 'updateUserName' is invalid, userId: {}, userName: {}",
                     userId, userName);
             return false;
         }
 
         User user = new User(userId, userName);
-        int updateResult = userDao.updateUserInfo(user);
-        return updateResult > 0;
+        int result = userMapper.updateById(user);
+        return result > 0;
     }
-
 }

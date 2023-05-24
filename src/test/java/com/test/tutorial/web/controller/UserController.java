@@ -20,8 +20,8 @@ import com.test.tutorial.web.result.UserNameResult;
 /**
  * User controller.
  *
- * @version 2014-8-19
  * @author Bert Lee
+ * @version 2014-8-19
  */
 @RestController
 @RequestMapping(value = "/user")
