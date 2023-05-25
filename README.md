@@ -18,12 +18,14 @@ The extension of
 ### 代码示例
 
 #### 单元测试
+* [UserServiceTest](/src/test/java/com/test/service/UserServiceTest.java)
 * [UserServiceJunitTest](/src/test/java/com/test/service/UserServiceJunitTest.java)
 * [UserServiceTestngTest](/src/test/java/com/test/service/UserServiceTestngTest.java)
+* [UserControllerTest](/src/test/java/com/test/web/controller/UserControllerTest.java)
 * [UserControllerTestngTest](/src/test/java/com/test/web/controller/UserControllerTestngTest.java)
 
 #### 集成测试
-* [UserControllerHttpApiTest](/src/test/java/com/test/web/controller/UserControllerHttpApiTest.java)
+* [UserControllerSpringBootTest](/src/test/java/com/test/web/controller/UserControllerSpringBootTest.java)
 
 
 ### 单元测试的价值
