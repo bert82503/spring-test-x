@@ -38,7 +38,7 @@ import static org.mockito.Mockito.*;
 @AutoConfigureMockMvc
 //@EnableWebMvc
 //@ExtendWith(MockitoExtension.class)
-public class UserControllerHttpApiTest {
+public class UserControllerSpringBootTest {
 
     @Resource
     private MockMvc mockMvc;
@@ -50,8 +50,8 @@ public class UserControllerHttpApiTest {
 //    @Resource
 //    private UserService userService;
 
-    public UserControllerHttpApiTest() {
-        log.info("create UserControllerHttpApiTest instance");
+    public UserControllerSpringBootTest() {
+        log.info("create UserControllerSpringBootTest instance");
     }
 
     @BeforeEach
