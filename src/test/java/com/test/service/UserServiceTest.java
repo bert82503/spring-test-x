@@ -77,8 +77,6 @@ class UserServiceTest {
         when(userMapper.selectById(anyLong())).thenReturn(user);
         when(orgMapper.selectById(anyLong())).thenReturn(org);
 
-        userService = new UserServiceImpl(userMapper, orgMapper);
-
         // 执行-When
         String orgName = userService.getOrgName(user.getId());
 
