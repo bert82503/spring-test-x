@@ -5,7 +5,10 @@ import com.test.tutorial.service.UserService;
 import com.test.tutorial.web.controller.UserController;
 import com.test.tutorial.web.param.UserIdParam;
 import com.test.tutorial.web.result.UserNameResult;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
@@ -22,15 +25,18 @@ import static org.mockito.Mockito.*;
  * <pre>
  * <a href="https://juejin.cn/post/7067402739134758948">
  *     SpringBoot+Junit5+Assertj+Mockito的单元测试</a>
+ *
+ * 控制器主要测试请求方式、请求地址、请求内容、返回内容、参数校验等内容，不测试业务逻辑。
  * </pre>
  *
  * @author lihuagang
  * @date 2023/5/24
  */
 @SpringJUnitWebConfig(UserController.class)
-//@ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
 @EnableWebMvc
+//@ExtendWith(MockitoExtension.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class UserControllerTest {
 
     @Resource
@@ -42,6 +48,7 @@ public class UserControllerTest {
     private UserService userService;
 
     @Test
+    @Order(10)
     void getUserName() {
         // 数据准备
         UserIdParam userIdParam = new UserIdParam().setUserId(3L);
@@ -61,6 +68,7 @@ public class UserControllerTest {
     }
 
     @Test
+    @Order(20)
     void getUserName4MockMvc() throws Exception {
         // 准备-Given
         // 1. 定义"被依赖的服务"的方法行为
