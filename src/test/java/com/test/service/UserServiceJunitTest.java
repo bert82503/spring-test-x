@@ -56,8 +56,8 @@ class UserServiceJunitTest {
 
 
     /**
-     * <a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/html/unit-testing.html#unit-testing-utilities">
-     * 14.2.1 General testing utilities</a>
+     * <a href="https://docs.spring.io/spring-framework/reference/testing/unit.html#unit-testing-utilities">
+     *     General Testing Utilities</a>
      */
     @BeforeEach
     public void setUp() {

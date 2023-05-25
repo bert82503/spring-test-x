@@ -4,7 +4,7 @@ spring-test-x
 ======
 
 The extension of 
-[Spring TestContext Framework](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/testing.html).
+[Spring Test Framework](https://docs.spring.io/spring-framework/reference/testing.html).
 
 
 ## 核心组件
