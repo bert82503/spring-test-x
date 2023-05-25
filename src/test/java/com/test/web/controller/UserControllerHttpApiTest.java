@@ -26,6 +26,8 @@ import static org.mockito.Mockito.*;
  *
  * 启动 Spring Boot 和 Tomcat 容器，耗时较长。
  * Started * in 4.148 seconds (JVM running for 6.623)
+ *
+ * SpringBootTest 注解已经添加 @ExtendWith(SpringExtension.class)
  * </pre>
  *
  * @author lihuagang
