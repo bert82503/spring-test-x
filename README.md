@@ -7,13 +7,14 @@ The extension of
 [Spring TestContext Framework](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/testing.html).
 
 
-### 核心组件
+## 核心组件
 
-#### 单元测试（[Unit testing - Wikipedia](https://en.wikipedia.org/wiki/Unit_testing)）
-* [AbstractControllerTestngTest](/src/main/java/com/test/AbstractControllerTestngTest.java)
+### 单元测试（[Unit testing - Wikipedia](https://en.wikipedia.org/wiki/Unit_testing)）
+* 服务层单测：SpringJUnitConfig+JUnit5+Mockito
+* 控制器层单测：SpringJUnitWebConfig+MockMvc+JUnit5+Mockito
 
-#### 集成测试（[Integration testing - Wikipedia](https://en.wikipedia.org/wiki/Integration_testing)）
-
+### 集成测试（[Integration testing - Wikipedia](https://en.wikipedia.org/wiki/Integration_testing)）
+* SpringBootTest+MockMvc+JUnit5+Mockito
 
 ### 代码示例
 
@@ -30,7 +31,7 @@ The extension of
 * [UserControllerSpringBootTest](/src/test/java/com/test/web/controller/UserControllerSpringBootTest.java)
 
 
-### 单元测试的价值
+## 单元测试的价值
 > 基于单元的快速测试
 
 * 尽早在尽量小的范围内暴露错误，以最低的成本修复(尽早发现问题)
@@ -42,11 +43,11 @@ The extension of
 * 分离接口和实现
 * **参数化数据驱动测试**使**测试代码**与**测试数据**完全独立，一组数据就是一个测试Case，代码结构简洁清晰
 
-#### 模拟测试的价值
+### 模拟测试的价值
 Mock的本质是让我们写更加稳定的单元测试，隔离**功能、时间、环境、数据等因素**对单元测试的影响，
 使结果变的可预测，做到真正的"单元"测试。
 
-#### 如何正确认知测试金字塔
+### 如何正确认知测试金字塔
 > http://www.51ste.com/share/det-5870.html
 
 如果你还不了解测试金字塔，但是很关注质量和测试，那么不管你是什么角色，这篇文章也适合你。
@@ -63,24 +64,26 @@ Mock的本质是让我们写更加稳定的单元测试，隔离**功能、时�
 因此，金字塔建议底层单元测试占比应该最多，而顶层UI层测试占比较少，中间层的集成测试居中，整体呈现金字塔结构。
 
 
-### 总结
-* 从单元测试代码中可以清晰地看出，基于**TestNG**的**参数化数据驱动测试**明显要比基于JUnit的简单清晰。
+## 总结
+* 从单元测试代码中可以清晰地看出，JUnit5与Spring生态高度集成，基于JUnit5、TestNG的**参数化数据驱动测试**都很简单清晰。
+* JUnit5，优先推荐
 
 
 ### 参考资料
 * [Unit testing - Wikipedia](https://en.wikipedia.org/wiki/Unit_testing)
 * [单元测试 - 维基百科](https://zh.wikipedia.org/wiki/单元测试)
+* [关于单元测试的总结及思考](http://ju.outofmemory.cn/entry/321814)
+* [写有价值的单元测试](https://yq.aliyun.com/articles/93804)
+* [如何正确认知测试金字塔](https://www.51ste.com/share/det-5870.html)
 * [14. Unit Testing of Spring Framework](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/unit-testing.html)
 * [16. Further Resources of Spring Framework](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/testing-resources.html)
 * [Test Overview - SpringSide4](https://github.com/springside/springside4/wiki/Test-Overview)
-* [TestNG - Wikipedia](https://en.wikipedia.org/wiki/TestNG)
-* [TestNG documentation](http://testng.org/doc/documentation-main.html)
+* [JUnit 5](https://junit.org/junit5/): the programmer-friendly testing framework for Java
+* [JUnit 5 User Guide](https://junit.org/junit5/docs/current/user-guide/)
 * [Mockito - Wikipedia](https://en.wikipedia.org/wiki/Mockito)
 * [Mockito documentation](http://site.mockito.org/mockito/docs/current/org/mockito/Mockito.html)
 * [Mockito FAQ](https://github.com/mockito/mockito/wiki/FAQ)
 * [AssertJ](http://joel-costigliola.github.io/assertj/)
-* [JUnit](http://junit.org): "A **programmer**-oriented testing framework for Java" (面向程序员)
-* [关于单元测试的总结及思考](http://ju.outofmemory.cn/entry/321814)
-* [写有价值的单元测试](https://yq.aliyun.com/articles/93804)
-* [如何正确认知测试金字塔](https://www.51ste.com/share/det-5870.html)
+* [TestNG - Wikipedia](https://en.wikipedia.org/wiki/TestNG)
+* [TestNG documentation](http://testng.org/doc/documentation-main.html)
 
