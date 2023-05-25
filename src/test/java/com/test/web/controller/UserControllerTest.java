@@ -44,6 +44,7 @@ public class UserControllerTest {
     @Resource
     private MockMvc mockMvc;
 
+    // mocked service (被依赖的服务)
     @MockBean
     private UserService userService;
 
