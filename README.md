@@ -18,6 +18,8 @@ The extension of
 ### 代码示例
 
 #### 单元测试
+> 基于单元的快速测试
+
 * [UserServiceTest](/src/test/java/com/test/service/UserServiceTest.java)
 * [UserServiceJunitTest](/src/test/java/com/test/service/UserServiceJunitTest.java)
 * [UserServiceTestngTest](/src/test/java/com/test/service/UserServiceTestngTest.java)
@@ -29,6 +31,8 @@ The extension of
 
 
 ### 单元测试的价值
+> 基于单元的快速测试
+
 * 尽早在尽量小的范围内暴露错误，以最低的成本修复(尽早发现问题)
 * 在著名的"测试金字塔"中，单元测试处于底层，相比上层的测试，单测运行快、成本低，更能指出问题所在并快速修复(bug fix)
 （关于这一点可以延伸阅读下 [Google testing: Just Say No to More End-to-End Tests](https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html)）
@@ -37,6 +41,10 @@ The extension of
 * 表达设计/设计文档(每一个单元测试案例均可以视为一项类、方法和待观察行为等设计元素)
 * 分离接口和实现
 * **参数化数据驱动测试**使**测试代码**与**测试数据**完全独立，一组数据就是一个测试Case，代码结构简洁清晰
+
+#### 模拟测试的价值
+Mock的本质是让我们写更加稳定的单元测试，隔离**功能、时间、环境、数据等因素**对单元测试的影响，
+使结果变的可预测，做到真正的"单元"测试。
 
 #### 如何正确认知测试金字塔
 > http://www.51ste.com/share/det-5870.html
