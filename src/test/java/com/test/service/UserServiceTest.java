@@ -23,6 +23,7 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.*;
+import static org.junit.jupiter.params.provider.Arguments.*;
 
 /**
  * Test of {@link UserServiceImpl}.
@@ -90,7 +91,7 @@ class UserServiceTest {
     static Stream<Arguments> getOrgNameTestData() {
         // 构造数据
         return Stream.of(
-                Arguments.arguments(new User().setId(3L).setUserName("Edward Lee").setOrgId(13L),
+                arguments(new User().setId(3L).setUserName("Edward Lee").setOrgId(13L),
                         new Organization().setId(13L).setOrgName("OpenSource"),
                         "OpenSource"
                 )
