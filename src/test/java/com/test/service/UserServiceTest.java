@@ -7,11 +7,19 @@ import com.test.tutorial.repository.entity.User;
 import com.test.tutorial.service.UserService;
 import com.test.tutorial.service.impl.UserServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import javax.annotation.Resource;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -37,6 +45,7 @@ import static org.mockito.Mockito.*;
  * @date 2023/5/24
  */
 @SpringJUnitConfig(UserServiceImpl.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class UserServiceTest {
 
     @Resource
@@ -59,16 +68,10 @@ class UserServiceTest {
     void updateUserName() {
     }
 
-    @Test
-    void getOrgName() {
-        // 构造数据
-        User user = new User()
-                .setId(3L)
-                .setUserName("Edward Lee")
-                .setOrgId(13L);
-        Organization org = new Organization()
-                .setId(13L)
-                .setOrgName("OpenSource");
+    @Order(10)
+    @ParameterizedTest
+    @MethodSource("getOrgNameTestData")
+    void getOrgName(User user, Organization org, String expectedOrgName) {
         // 准备-Given
         when(userMapper.selectById(anyLong())).thenReturn(user);
         when(orgMapper.selectById(anyLong())).thenReturn(org);
@@ -76,11 +79,21 @@ class UserServiceTest {
         userService = new UserServiceImpl(userMapper, orgMapper);
 
         // 执行-When
-        String orgName = userService.getOrgName(3L);
+        String orgName = userService.getOrgName(user.getId());
 
         // 验证-Then
-        assertThat(orgName).isEqualTo("OpenSource");
-        verify(userMapper, times(1)).selectById(3L);
-        verify(orgMapper).selectById(13L);
+        assertThat(orgName).isEqualTo(expectedOrgName);
+        verify(userMapper, times(1)).selectById(user.getId());
+        verify(orgMapper).selectById(org.getId());
+    }
+
+    static Stream<Arguments> getOrgNameTestData() {
+        // 构造数据
+        return Stream.of(
+                Arguments.arguments(new User().setId(3L).setUserName("Edward Lee").setOrgId(13L),
+                        new Organization().setId(13L).setOrgName("OpenSource"),
+                        "OpenSource"
+                )
+        );
     }
 }
