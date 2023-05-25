@@ -23,6 +23,9 @@ import static org.mockito.Mockito.*;
  *     SpringBoot+Junit5+Assertj+Mockito的单元测试</a>
  * <a href="https://juejin.cn/post/7036140165944836104">
  *     SpringBoot实战：JUnit5+MockMvc+Mockito做好单元测试</a>
+ *
+ * 启动 Spring Boot 和 Tomcat 容器，耗时较长。
+ * Started * in 4.148 seconds (JVM running for 6.623)
  * </pre>
  *
  * @author lihuagang
@@ -30,9 +33,9 @@ import static org.mockito.Mockito.*;
  */
 @Slf4j
 @SpringBootTest(classes = Application.class)
-//@ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
 //@EnableWebMvc
+//@ExtendWith(MockitoExtension.class)
 public class UserControllerHttpApiTest {
 
     @Resource
