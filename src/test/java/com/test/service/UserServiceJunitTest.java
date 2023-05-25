@@ -7,13 +7,18 @@ import com.test.tutorial.repository.entity.User;
 import com.test.tutorial.service.UserService;
 import com.test.tutorial.service.impl.UserServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.stream.Stream;
+
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.params.provider.Arguments.*;
 import static org.mockito.Mockito.*;
 
 /**
@@ -28,6 +33,8 @@ import static org.mockito.Mockito.*;
  * @version 2023-5-24
  */
 @ExtendWith(MockitoExtension.class)
+//@Execution(ExecutionMode.CONCURRENT)
+//@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class UserServiceJunitTest {
 
     // tested service
@@ -38,6 +45,8 @@ class UserServiceJunitTest {
     // mocked service (被依赖的服务)
     @Mock
     private UserMapper userMapper;
+    @Mock
+    private OrgMapper orgMapper;
 
     // 组件自动装配
 //    @Resource
@@ -69,12 +78,9 @@ class UserServiceJunitTest {
      *     AssertJ - Fluent assertions for java</a>
      * </pre>
      */
-    @Test
-    void getUserName() {
-        User user = new User()
-                .setId(3L)
-                .setUserName("Edward Lee");
-
+    @ParameterizedTest
+    @MethodSource("getUserNameTestData")
+    void getUserName(User user) {
         // 1. 定义"被依赖的服务"的方法行为
         // stubbing
         when(userMapper.selectById(anyLong())).thenReturn(user);
@@ -84,26 +90,28 @@ class UserServiceJunitTest {
         // basic assertions
         assertThat(userName).isEqualTo("");
 
-        /// 重复的测试逻辑代码
+        // 重复的测试逻辑代码
         userId = 3L;
         userName = userService.getUserName(userId);
         assertThat(userName).isEqualTo("Edward Lee");
+    }
+
+    static Stream<Arguments> getUserNameTestData() {
+        // 构造数据
+        return Stream.of(
+                arguments(new User().setId(3L).setUserName("Edward Lee"),
+                        "OpenSource"
+                )
+        );
     }
 
     /**
      * <a href="https://www.baeldung.com/mockito-junit-5-extension">
      *     Mockito and JUnit 5 – Using ExtendWith</a>
      */
-    @Test
-    void getOrgName(@Mock OrgMapper orgMapper) {
-        // 构造数据
-        User user = new User()
-                .setId(3L)
-                .setUserName("Edward Lee")
-                .setOrgId(13L);
-        Organization org = new Organization()
-                .setId(13L)
-                .setOrgName("OpenSource");
+    @ParameterizedTest
+    @MethodSource("getOrgNameTestData")
+    void getOrgName(User user, Organization org, String expectedOrgName) {
         // 准备-Given
         when(userMapper.selectById(anyLong())).thenReturn(user);
         when(orgMapper.selectById(anyLong())).thenReturn(org);
@@ -111,11 +119,21 @@ class UserServiceJunitTest {
         userService = new UserServiceImpl(userMapper, orgMapper);
 
         // 执行-When
-        String orgName = userService.getOrgName(3L);
+        String orgName = userService.getOrgName(user.getId());
 
         // 验证-Then
-        assertThat(orgName).isEqualTo("OpenSource");
-        verify(userMapper, times(1)).selectById(3L);
-        verify(orgMapper).selectById(13L);
+        assertThat(orgName).isEqualTo(expectedOrgName);
+        verify(userMapper, times(1)).selectById(user.getId());
+        verify(orgMapper).selectById(org.getId());
+    }
+
+    static Stream<Arguments> getOrgNameTestData() {
+        // 构造数据
+        return Stream.of(
+                arguments(new User().setId(3L).setUserName("Edward Lee").setOrgId(13L),
+                        new Organization().setId(13L).setOrgName("OpenSource"),
+                        "OpenSource"
+                )
+        );
     }
 }
