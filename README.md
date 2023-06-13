@@ -12,13 +12,13 @@ The extension of
 ### 单元测试
 > [Unit testing - Wikipedia](https://en.wikipedia.org/wiki/Unit_testing)
 
-* 服务层单测：SpringJUnitConfig+JUnit5+Mockito
-* 控制器层单测：SpringJUnitWebConfig+MockMvc+JUnit5+Mockito
+* 服务层单测：SpringJUnitConfig + JUnit5 + Mockito
+* 控制器层单测：SpringJUnitWebConfig + MockMvc + JUnit5 + Mockito
 
 ### 集成测试
 > [Integration testing - Wikipedia](https://en.wikipedia.org/wiki/Integration_testing)
 
-* SpringBootTest+MockMvc+JUnit5+Mockito
+* SpringBootTest + MockMvc + JUnit5 + Mockito
 
 ### 代码示例
 
